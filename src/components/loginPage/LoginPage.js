@@ -1,7 +1,8 @@
 import React from 'react';
 
 function LoginPage() {
-    function redirectToSpotify() {
+    function redirectToSpotify(e) {
+        e.preventDefault();
         const scopes = encodeURIComponent("streaming user-read-email user-read-private user-read-playback-state user-modify-playback-state user-library-read user-library-modify playlist-read-private playlist-read-collaborative")
         const redirect_uri = 'http://localhost:3000/';
         const client_id = 'ad099cca2b5444c59732b6696db3acb9';
