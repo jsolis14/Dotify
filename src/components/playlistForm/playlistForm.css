@@ -1,0 +1,43 @@
+.playlist-popup {
+    display: flex;
+    flex-flow: row-reverse;
+    justify-content: center;
+    align-self: center;
+
+    position: fixed;
+    z-index: 1;
+    width: 40vw;
+    height: 72vh;
+    background-color:darkgray;
+    color: black;
+  }
+
+  .playlist-popup__container {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+  }
+
+  .playlist-form-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width:100%;
+    height: 100vh;
+  }
+
+.playlist-form-container > h2{
+    text-align: center;
+    width:75%;
+  }
+
+.playlist-form__close{
+    display: flex;
+    align-self: flex-end;
+    width: 40px;
+    height: 40px;
+
+}
