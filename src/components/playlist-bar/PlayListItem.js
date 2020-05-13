@@ -4,8 +4,8 @@ import { NavLink } from 'react-router-dom'
 function PLayListItem({ images, name, uri, id }) {
 
     return (
-        <NavLink to={`/playlist/${id}`}>
-            <li>{name}</li>
+        <NavLink exact to={`/playlist/${id}`}>
+            <div>{name}</div>
         </NavLink>
     )
 };

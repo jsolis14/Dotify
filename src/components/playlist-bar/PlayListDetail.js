@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AppContext } from '../../context/appContext';
 import SongItem from '../song/SongItem';
+import Table from 'react-bootstrap/Table';
+import './playListDetail.css';
 
 function PlayListDetail(props) {
     const { authToken } = useContext(AppContext)
@@ -27,10 +29,22 @@ function PlayListDetail(props) {
 
     return (
         <>
-            <div className='play-list-songs'>
-                {playListSongs.map(({ track }) => {
-                    return <SongItem key={track.id} track={track} playlistId={props.match.params.playlistId} />
-                })}
+            <div className='playlist-container'>
+                <Table className='playlist__table' striped bordered hover variant="dark">
+                    <thead>
+                        <tr>
+                            <th>play</th>
+                            <th>Title</th>
+                            <th>Artist</th>
+                            <th>Album</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {playListSongs.map(({ track }) => {
+                            return <SongItem key={track.id} track={track} playlistId={props.match.params.playlistId} />
+                        })}
+                    </tbody>
+                </Table>
             </div>
 
         </>

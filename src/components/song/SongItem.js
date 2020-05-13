@@ -43,20 +43,30 @@ function SongItem({ track, playlistId }) {
     }
 
     return (
-        <div className='song'>
-            <div className='song__play-button'>
-                <Link to={`/playlist/${playlistId}`} onClick={playSong}>Play Song</Link>
-            </div>
-            <div className='song__title'>
-                {track.name}
-            </div>
-            <div className='song-artist'>
-                {getArtist()}
-            </div>
-            <div className='song-album'>
-                {track.album.name}
-            </div>
-        </div>
+        <tr>
+            <td>
+                <Link to={`/playlist/${playlistId}`} onClick={playSong}>
+                    <img src="https://img.icons8.com/material/24/000000/circled-play--v1.png" />
+                </Link>
+            </td>
+            <td>{track.name}</td>
+            <td>{getArtist()}</td>
+            <td>{track.album.name}</td>
+        </tr>
+        // {/* <div className='song'>
+        //     <div className='song__play-button'>
+
+        //     </div>
+        //     <div className='song__title'>
+
+        //     </div>
+        //     <div className='song-artist'>
+
+        //     </div>
+        //     <div className='song-album'>
+
+        //     </div>
+        // </div> */}
     )
 }
 

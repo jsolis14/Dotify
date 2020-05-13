@@ -3,7 +3,7 @@ import { AppContext } from '../../context/appContext';
 import PlayListItem from './PlayListItem';
 
 function PlayListBar() {
-    const { authToken } = useContext(AppContext);
+    const { authToken, setShowCreatePlaylist } = useContext(AppContext);
     const [numberOfPlaylist, setNumberOfPlaylist] = useState('');
     const [playlists, setPlaylists] = useState([]);
 
@@ -20,20 +20,23 @@ function PlayListBar() {
         setNumberOfPlaylist(userPlaylistsData.items.length);
     }
 
+    function showForm() {
+        setShowCreatePlaylist(true);
+    }
+
     useEffect(() => {
         getUserPlaylists();
     }, [numberOfPlaylist])
     return (
 
-        <>
-            <div>
-                <button>+Playlist</button>
+        <div className='playlist-container'>
+            <div className='playlist__add-button'>
+                <button onClick={showForm}>+Playlist</button>
             </div>
-            <ul>
+            <div className='playlist__items'>
                 {playlists.map(playlist => <PlayListItem key={playlist.id} id={playlist.id} images={playlist.images} name={playlist.name} uri={playlist.uri} />)}
-            </ul>
-
-        </>
+            </div>
+        </div>
     );
 }
 
