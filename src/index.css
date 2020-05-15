@@ -1,7 +1,5 @@
 /* TODO Add site wide styles */
-body{
 
-}
 #root{
     background-color:#343a40;
     margin: 0;
@@ -21,15 +19,17 @@ body{
 a{
     text-decoration: none;
 }
-
+a:hover{
+    cursor: pointer;
+}
 .side-pannel{
-    overflow: auto;
     height: 100%;
-    width: 35%;
+    width: 20%;
 }
 .navlink-container{
     display: flex;
     flex-direction: column;
+    color: white;
 }
 
 .navlink{
@@ -48,6 +48,7 @@ a{
 .navlink__text-container{
     display: flex;
     align-items: center;
+    color: white;
 }
 
 .navlink__icon{
@@ -70,4 +71,17 @@ a{
     height: 100%;
     overflow: auto;
     width: 100%;
+}
+
+.main-body-scrollbar{
+    width:100%;
+}
+
+.simplebar-wrapper{
+    height: 100%;
+}
+
+.table-col-buttons{
+    display: flex;
+    justify-content: space-around;
 }

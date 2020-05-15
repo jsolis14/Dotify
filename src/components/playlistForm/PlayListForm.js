@@ -1,9 +1,9 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 import { AppContext } from '../../context/appContext';
 import { Form, Button } from 'react-bootstrap';
 import './playlistForm.css';
 export default function PlaylistForm() {
-    const { authToken, showCreatePlaylist, setShowCreatePlaylist, userId } = useContext(AppContext);
+    const { authToken, setShowCreatePlaylist, userId } = useContext(AppContext);
     const [title, setTitle] = useState('');
     const [privacy, setPrivacy] = useState(true);
     const [description, setDescription] = useState('');
@@ -23,7 +23,7 @@ export default function PlaylistForm() {
         });
 
         if (playlistPost.ok) {
-            const playlist = await playlistPost.json();
+            //maybe update playlist length here;
             setShowCreatePlaylist(false);
         }
 

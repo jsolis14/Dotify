@@ -1,0 +1,36 @@
+.search-page__container{
+    margin:10px;
+}
+
+.songs__header{
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+.artists__header{
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.songs__loadMore{
+    display: flex;
+    justify-content: center;
+
+}
+
+.loadMore__button{
+    background-color: #1DB954;
+    border-radius: 30%;
+}
+
+.songs__header{
+    color: white;
+}
+
+.artists__header{
+    color: white;
+}
+
+.search-page__form{
+    width: 30%;
+}

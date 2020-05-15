@@ -11,8 +11,6 @@ function SongItem({ track, playlistId }) {
         return artistArr.join();
     }
 
-    console.log(getArtist())
-
     async function playSong() {
         const connectDevicesData = await fetch(`https://api.spotify.com/v1/me/player/devices`, {
             headers: {
@@ -29,9 +27,7 @@ function SongItem({ track, playlistId }) {
         });
 
         const spotify_uri = track.uri;
-        console.log(devices)
-        console.log(deviceId);
-        console.log(spotify_uri);
+
         fetch(`https://api.spotify.com/v1/me/player/play?device_id=${deviceId}`, {
             method: 'PUT',
             body: JSON.stringify({ uris: [spotify_uri] }),
@@ -45,28 +41,23 @@ function SongItem({ track, playlistId }) {
     return (
         <tr>
             <td>
-                <Link to={`/playlist/${playlistId}`} onClick={playSong}>
-                    <img src="https://img.icons8.com/material/24/000000/circled-play--v1.png" />
-                </Link>
+                <div className='table-col-buttons'>
+                    <a onClick={playSong}>
+                        <img alt='play song' src="https://img.icons8.com/material/24/000000/circled-play--v1.png" />
+                    </a>
+                    <a>
+                        <img src="https://img.icons8.com/material-sharp/24/000000/add.png" />
+                    </a>
+                    <a>
+                        <img src="https://img.icons8.com/ios-glyphs/30/000000/personal-video-recorder-menu.png" />
+                    </a>
+                </div>
+
             </td>
             <td>{track.name}</td>
             <td>{getArtist()}</td>
             <td>{track.album.name}</td>
         </tr>
-        // {/* <div className='song'>
-        //     <div className='song__play-button'>
-
-        //     </div>
-        //     <div className='song__title'>
-
-        //     </div>
-        //     <div className='song-artist'>
-
-        //     </div>
-        //     <div className='song-album'>
-
-        //     </div>
-        // </div> */}
     )
 }
 
