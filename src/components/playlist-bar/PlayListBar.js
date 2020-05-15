@@ -2,22 +2,38 @@ import React, { useState, useContext, useEffect } from 'react';
 import { AppContext } from '../../context/appContext';
 import PlayListItem from './PlayListItem';
 
+
 function PlayListBar() {
     const { authToken, setShowCreatePlaylist } = useContext(AppContext);
-    const [numberOfPlaylist, setNumberOfPlaylist] = useState('');
+    const [numberOfPlaylist, setNumberOfPlaylist] = useState(0);
     const [playlists, setPlaylists] = useState([]);
+    const url = 'https://api.spotify.com/v1/me/playlists';
 
-    const getUserPlaylists = async () => {
-        const userPlaylists = await fetch('https://api.spotify.com/v1/me/playlists', {
+    const getUserPlaylists = async (url, authToken) => {
+        const userPlaylists = await fetch(url, {
             headers: {
                 'Authorization': `Bearer ${authToken}`
             }
         })
+        if (userPlaylists.status === 401) {
+            localStorage.removeItem('SPOTIFY_ACCESS');
+            localStorage.removeItem('_spharmony_device_id');
+        }
 
         const userPlaylistsData = await userPlaylists.json();
-        console.log(userPlaylistsData);
-        setPlaylists(userPlaylistsData.items);
-        setNumberOfPlaylist(userPlaylistsData.items.length);
+
+        setPlaylists((oldPlaylist) => {
+            return [...oldPlaylist, ...userPlaylistsData.items]
+        });
+
+        setNumberOfPlaylist((oldNum) => {
+            return oldNum + userPlaylistsData.items.length;
+        })
+
+        if (userPlaylistsData.next !== null) {
+            getUserPlaylists(userPlaylistsData.next, authToken);
+        }
+
     }
 
     function showForm() {
@@ -25,8 +41,8 @@ function PlayListBar() {
     }
 
     useEffect(() => {
-        getUserPlaylists();
-    }, [numberOfPlaylist])
+        getUserPlaylists(url, authToken);
+    }, [])
     return (
 
         <div className='playlist-container'>

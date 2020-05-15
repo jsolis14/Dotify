@@ -1,0 +1,72 @@
+.artist-page-header-container{
+    margin: 10px;
+}
+
+.artist-page__header{
+    display: flex;
+}
+
+.artist-page__above-picture{
+    display: flex;
+    /* align-items: center; */
+    color: white;
+    margin: 0px 10px;
+}
+
+.artist-page__picture{
+    height: 300px;
+    width: 300px;
+}
+
+.artist-page__verified{
+    width: 30px;
+    height: 30px;
+}
+
+.artist-page__right{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+    width: 75%;
+    height: 100%;
+    color: white;
+    margin: auto;
+}
+
+.artist-page__text-verified{
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+}
+
+.artist-page__name{
+    font-weight: bolder;
+    font-size: 90px;
+    align-self: flex-start;
+}
+
+.artist-page__left{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.sc-ifAKCX{
+    color:white;
+    font-size: x-large;
+}
+
+.top-songs_container{
+    width: 99%;
+}
+
+.artist-page__header-content{
+    border-bottom: solid 1px black;
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    color: white;
+    margin: 25px auto;
+    text-align: center;
+}

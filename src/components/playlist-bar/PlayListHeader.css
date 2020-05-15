@@ -1,0 +1,20 @@
+.playlist-header-container{
+    display: flex;
+    margin: 20px 0px;
+}
+
+.playlist-header__right{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    color: white;
+}
+
+.playlist-header__right{
+    width: 400px;
+    height: 300px;
+}
+
+.playlist-header__name{
+    font-weight: 700;
+}
