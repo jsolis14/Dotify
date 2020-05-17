@@ -4,9 +4,10 @@ function ArtistPageHeader({ artist }) {
     return (
         <div className='artist-page-header-container'>
             <div className='artist-page__header'>
-                <div className='artist-page__picture'>
-                    <img src={artist.images.length > 0 ? artist.images[0].url : ''} />
-                </div>
+                {artist.images.length > 0 ? <div className='artist-page__picture'>
+                    <img src={artist.images[0].url} />
+                </div> : <></>}
+
                 <div className='artist-page__above-picture'>
                     <div className='artist-page__left'>
                         <div className='artist-page__text-verified'>

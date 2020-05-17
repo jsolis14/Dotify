@@ -85,3 +85,14 @@ a:hover{
     display: flex;
     justify-content: space-around;
 }
+
+.playlist__add-button{
+    margin: 0px;
+    display: flex;
+    justify-content: space-between;
+    height: 30px;
+}
+
+.playlist-bar__title{
+    color:white;
+}
