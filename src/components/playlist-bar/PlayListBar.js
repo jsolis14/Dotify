@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { AppContext } from '../../context/appContext';
+import { Redirect } from 'react-router-dom';
 import PlayListItem from './PlayListItem';
 
 
@@ -18,6 +19,8 @@ function PlayListBar() {
         if (userPlaylists.status === 401) {
             localStorage.removeItem('SPOTIFY_ACCESS');
             localStorage.removeItem('_spharmony_device_id');
+            window.location.href = process.env.REACT_APP_REDIRECT_URI + '/login';
+            return;
         }
 
         const userPlaylistsData = await userPlaylists.json();

@@ -17,7 +17,9 @@ function AlbumItem({ album }) {
                     <Card.Title style={{ color: "black" }} > {album.name}</Card.Title>
                     <Card.Text style={{ color: "black" }} >
                         {getArtist()}
-                        <p>{album.album_type}</p>
+                    </Card.Text>
+                    <Card.Text style={{ color: "black" }} >
+                        {album.album_type}
                     </Card.Text>
                 </Card.Body>
             </Card>
