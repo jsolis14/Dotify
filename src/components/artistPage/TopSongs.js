@@ -6,10 +6,10 @@ function TopSongs({ songs }) {
     return (
         <div className='top-songs_container'>
             <h1>Artist's Top Songs</h1>
-            <Table className='song-result__table' striped bordered hover variant="dark">
+            <Table style={{ tableLayout: 'fixed' }} className='song-result__table' striped bordered hover variant="dark">
                 <thead>
                     <tr>
-                        <th>play</th>
+                        <th style={{ width: '10%' }}>play</th>
                         <th>Title</th>
                         <th>Artist</th>
                         <th>Album</th>

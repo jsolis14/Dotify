@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Form, Table, Card, CardColumns } from 'react-bootstrap';
+import { Form, Table, Card, CardColumns, Button } from 'react-bootstrap';
 import { AppContext } from '../../context/appContext';
 import SongItem from '../song/SongItem';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import './searchPage.css'
 
 function SearchPage() {
@@ -22,13 +22,18 @@ function SearchPage() {
             headers: { 'Authorization': `Bearer ${authToken}` }
         })
 
-        const { tracks, artists } = await searchResultsData.json()
-        console.log(artists);
-        setSongs(tracks.items);
-        setArtist(artists.items);
-        if (tracks.next !== null) {
-            setQueryNext(tracks.next);
+        if (searchResultsData.ok) {
+            const { tracks, artists } = await searchResultsData.json()
+            console.log(artists);
+            setSongs(tracks.items);
+            setArtist(artists.items);
+            if (tracks.next !== null) {
+                setQueryNext(tracks.next);
+            }
+        } else {
+            return
         }
+
 
     }
 
@@ -57,53 +62,54 @@ function SearchPage() {
                     </Form.Group>
                 </Form>
             </div>
-            <div className='search-page__results'>
-                <div className='search-page__songs'>
-                    <h2 className='songs__header'>Songs</h2>
-                    <Table className='song-result__table' striped bordered hover variant="dark">
-                        <thead>
-                            <tr>
-                                <th>play</th>
-                                <th>Title</th>
-                                <th>Artist</th>
-                                <th>Album</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {songs.map((track) => {
-                                return <SongItem key={track.id} track={track} />
+            {((songs.length === 0 || artists.length === 0) ? <> </> :
+                <div className='search-page__results'>
+                    <div className='search-page__songs'>
+                        <h2 className='songs__header'>Songs</h2>
+                        <Table style={{ tableLayout: 'fixed' }} className='song-result__table' striped bordered hover variant="dark">
+                            <thead>
+                                <tr>
+                                    <th style={{ width: '10%' }}>play</th>
+                                    <th>Title</th>
+                                    <th>Artist</th>
+                                    <th>Album</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {songs.map((track) => {
+                                    return <SongItem key={track.id} track={track} />
+                                })}
+                            </tbody>
+                        </Table>
+                        {songs.length > 0 ? (<div className='songs__loadMore'>
+                            <Button variant='success' style={{ marginBottom: '5px' }} onClick={() => loadMoreSongs(queryNext)}>Load More songs</Button>
+                        </div>) : <></>}
+                    </div>
+                    <div className='search-page__artists'>
+                        <h2 className='artists__header'>Artist</h2>
+                        <CardColumns>
+                            {artists.map((artist) => {
+                                return (
+                                    <Link key={artist.id} to={`/artist/${artist.id}`}>
+                                        <Card bg='secondary' text='white'>
+                                            <Card.Img variant="top" src={artist.images.length > 0 ? artist.images[1].url : ''} />
+                                            <Card.Body>
+                                                <Card.Title>{artist.name}</Card.Title>
+                                                <Card.Text>
+                                                    Followers: {artist.followers.total}
+                                                </Card.Text>
+                                            </Card.Body>
+                                            <Card.Footer>
+                                                <small className="text-muted">Last updated 3 mins ago</small>
+                                            </Card.Footer>
+                                        </Card>
+                                    </Link>);
                             })}
-                        </tbody>
-                    </Table>
-                    {songs.length > 0 ? (<div className='songs__loadMore'>
-                        <button className='loadMore__button' onClick={() => loadMoreSongs(queryNext)}>Load More songs</button>
-                    </div>) : <></>}
-                </div>
-                <div className='search-page__artists'>
-                    <h2 className='artists__header'>Artist</h2>
-                    <CardColumns>
-                        {artists.map((artist) => {
-                            return (
-                                <Link key={artist.id} to={`/artist/${artist.id}`}>
-                                    <Card bg='secondary' text='white'>
-                                        <Card.Img variant="top" src={artist.images.length > 0 ? artist.images[1].url : ''} />
-                                        <Card.Body>
-                                            <Card.Title>{artist.name}</Card.Title>
-                                            <Card.Text>
-                                                Followers: {artist.followers.total}
-                                            </Card.Text>
-                                        </Card.Body>
-                                        <Card.Footer>
-                                            <small className="text-muted">Last updated 3 mins ago</small>
-                                        </Card.Footer>
-                                    </Card>
-                                </Link>);
-                        })}
-                    </CardColumns>
-                </div>>
+                        </CardColumns>
+                    </div>>
 
 
-            </div>
+            </div>)}
         </div>
     )
 }

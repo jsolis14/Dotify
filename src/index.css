@@ -36,8 +36,9 @@ a:hover{
     display: flex;
     flex-direction: row;
     height: 25%;
-    width: 25%;
+    width: 40%;
     margin: 5px 5px;
+    align-items: space-between;
 }
 
 .navlink__items{
@@ -49,6 +50,7 @@ a:hover{
     display: flex;
     align-items: center;
     color: white;
+    margin-left: 5px;
 }
 
 .navlink__icon{
@@ -95,4 +97,12 @@ a:hover{
 
 .playlist-bar__title{
     color:white;
+}
+
+table{
+    table-layout: fixed;
+}
+
+.play-column{
+    width: 10%;
 }

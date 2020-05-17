@@ -118,7 +118,10 @@ function AppWithContext() {
       }
     })
     if (userData.status === 401) {
-      localStorage.removeItem('SPOTIFY_ACCESS')
+      localStorage.removeItem('SPOTIFY_ACCESS');
+      localStorage.removeItem('_spharmony_device_id');
+      window.location.href = process.env.REACT_APP_REDIRECT_URI + '/login';
+      return;
     }
 
     const { id } = await userData.json();

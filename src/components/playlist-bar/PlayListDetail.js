@@ -57,23 +57,29 @@ function PlayListDetail(props) {
         <>
             <div className='playlist-container'>
                 <PlayListHeader playlistDetail={playlistDetail} />
-                <Table className='playlist__table' striped bordered hover variant="dark">
-                    <thead>
-                        <tr>
-                            <th>play</th>
-                            <th>Title</th>
-                            <th>Artist</th>
-                            <th>Album</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {playListSongs.map(({ track }, idx) => {
-                            return <SongItem key={idx} track={track} playlistId={props.match.params.playlistId} />
-                        })}
-                    </tbody>
-                </Table>
+                {(playListSongs.length > 0 ?
+                    <Table style={{ tableLayout: 'fixed' }} className='playlist__table' striped bordered hover variant="dark">
+                        <thead>
+                            <tr>
+                                <th style={{ width: '10%' }}>play</th>
+                                <th>Title</th>
+                                <th>Artist</th>
+                                <th>Album</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {playListSongs.map(({ track }, idx) => {
+                                return <SongItem key={idx} track={track} playlistId={props.match.params.playlistId} />
+                            })}
+                        </tbody>
+                    </Table>
+                    :
+                    <div className='empty-playlist-container'>
+                        <div className='empty-playlist-text'>
+                            This Playlist is Currently Empty
+                    </div>
+                    </div>)}
             </div>
-
         </>
     )
 }
