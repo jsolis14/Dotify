@@ -7,13 +7,16 @@ import PlayListBar from './components/playlist-bar/PlayListBar';
 import PlayListDetail from './components/playlist-bar/PlayListDetail';
 import PlaylistForm from './components/playlistForm/PlayListForm';
 import ArtistPage from './components/artistPage/ArtistPage';
+import Notification from './components/notification/Notification';
 import SearchPage from './components/search/SearchPage';
 import SimpleBar from 'simplebar-react';
 import 'simplebar/dist/simplebar.min.css';
+import AddToPlaylistForm from './components/add-to-playlist/AddToPlaylistForm.js';
 
 
 function App() {
-  const { authToken, showCreatePlaylist } = useContext(AppContext)
+  const { authToken, showCreatePlaylist, showNotification, showAddToPlaylistForm } = useContext(AppContext)
+
 
   return (
     <>
@@ -75,7 +78,9 @@ function App() {
           </Switch>
         </SimpleBar>
       </div>
+      {showNotification.show ? <Notification /> : <></>}
       {showCreatePlaylist ? <PlaylistForm /> : <></>}
+      {showAddToPlaylistForm.show ? <AddToPlaylistForm /> : <></>}
       <div className='spotify-player'>
         <SpotifyPlayer name='Dotify Player' token={authToken} uris={['spotify:artist:6HQYnRM4OzToCYPpVBInuU']} />
       </div>
@@ -88,6 +93,10 @@ function AppWithContext() {
   const [authToken, setAuthToken] = useState(null);
   const [showCreatePlaylist, setShowCreatePlaylist] = useState(false);
   const [userId, setUserId] = useState('');
+  const [showNotification, setShowNotification] = useState({ show: false, name: '', artist: '' });
+  const [showAddToPlaylistForm, setShowAddToPlaylistForm] = useState({ show: false, track: '' });
+  const [playlists, setPlaylists] = useState([]);
+
   if (localStorage.getItem('SPOTIFY_ACCESS') && !authToken) {
     setAuthToken(localStorage.getItem('SPOTIFY_ACCESS'));
   }
@@ -125,7 +134,7 @@ function AppWithContext() {
   }, [])
 
   return (
-    <AppContext.Provider value={{ authToken, setAuthToken, showCreatePlaylist, setShowCreatePlaylist, userId }}>
+    <AppContext.Provider value={{ authToken, setAuthToken, showCreatePlaylist, setShowCreatePlaylist, userId, showNotification, setShowNotification, showAddToPlaylistForm, setShowAddToPlaylistForm, playlists, setPlaylists }}>
       {(authToken ? <App /> : <Redirect to='/login' />)}
       <Switch>
         <Route exact path='/login' component={LoginPage} />

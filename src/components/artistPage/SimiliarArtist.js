@@ -11,7 +11,7 @@ function SimiliarArtist({ artists }) {
             <div className='artist-page__header-container'>
                 <h1 className='artist-page__header-content'>Similiar Artist</h1>
             </div>
-            <div style={{ "padding": "15px 60px", "maxWidth": 1000, "margin": "0px auto" }}>
+            <div style={{ "padding": "15px 60px", "maxWidth": "100%", "maxHeight": "100%", "margin": "0px" }} >
                 <ItemsCarousel
                     infiniteLoop={false}
                     gutter={12}
@@ -19,8 +19,8 @@ function SimiliarArtist({ artists }) {
                     chevronWidth={60}
                     disableSwipe={false}
                     alwaysShowChevrons={false}
-                    numberOfCards={4}
-                    slidesToScroll={4}
+                    numberOfCards={5}
+                    slidesToScroll={5}
                     outsideChevron={true}
                     showSlither={false}
                     firstAndLastGutter={false}

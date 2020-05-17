@@ -67,8 +67,8 @@ function PlayListDetail(props) {
                         </tr>
                     </thead>
                     <tbody>
-                        {playListSongs.map(({ track }) => {
-                            return <SongItem key={track.id} track={track} playlistId={props.match.params.playlistId} />
+                        {playListSongs.map(({ track }, idx) => {
+                            return <SongItem key={idx} track={track} playlistId={props.match.params.playlistId} />
                         })}
                     </tbody>
                 </Table>

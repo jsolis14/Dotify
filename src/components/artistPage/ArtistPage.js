@@ -73,12 +73,12 @@ function ArtistPage({ match }) {
     }, [match.params.artistId])
 
     return (
-        <>
+        <div className='artist-page-container'>
             <ArtistPageHeader artist={artist} />
             <TopSongs songs={songs} />
             <Albums albums={albums} />
             <SimiliarArtist artists={similiarArtist} />
-        </>
+        </div>
 
     )
 }

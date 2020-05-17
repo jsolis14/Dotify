@@ -4,9 +4,9 @@ import PlayListItem from './PlayListItem';
 
 
 function PlayListBar() {
-    const { authToken, setShowCreatePlaylist } = useContext(AppContext);
+    const { authToken, setShowCreatePlaylist, playlists, setPlaylists } = useContext(AppContext);
     const [numberOfPlaylist, setNumberOfPlaylist] = useState(0);
-    const [playlists, setPlaylists] = useState([]);
+    // const [playlists, setPlaylists] = useState([]);
     const url = 'https://api.spotify.com/v1/me/playlists';
 
     const getUserPlaylists = async (url, authToken) => {
@@ -47,7 +47,10 @@ function PlayListBar() {
 
         <div className='playlist-container'>
             <div className='playlist__add-button'>
-                <button onClick={showForm}>+Playlist</button>
+                <div className='playlist-bar__title'>PLAYLISTS</div>
+                <a onClick={showForm}>
+                    <img src={require('../../images/add-playlist-button.png')} />
+                </a>
             </div>
             <div className='playlist__items'>
                 {playlists.map(playlist => <PlayListItem key={playlist.id} id={playlist.id} images={playlist.images} name={playlist.name} uri={playlist.uri} />)}

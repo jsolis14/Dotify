@@ -1,0 +1,13 @@
+.notification-popup-container {
+    display: flex;
+    flex-flow: row-reverse;
+    justify-content: center;
+    align-self: center;
+
+    position: fixed;
+    z-index: 1;
+    width: 40%;
+    height: 5%;
+    background-color: rgba(0,0,0,0.2);
+    color: white;
+  }

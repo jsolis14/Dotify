@@ -1,18 +1,16 @@
 import React, { useContext, useState } from 'react';
 import { AppContext } from '../../context/appContext';
-import { Form, Button } from 'react-bootstrap';
+import { Modal, Form, Button } from 'react-bootstrap';
 import './playlistForm.css';
 export default function PlaylistForm() {
-    const { authToken, setShowCreatePlaylist, userId } = useContext(AppContext);
+    const { authToken, setShowCreatePlaylist, userId, showCreatePlaylist, playlists, setPlaylists } = useContext(AppContext);
     const [title, setTitle] = useState('');
     const [privacy, setPrivacy] = useState(true);
     const [description, setDescription] = useState('');
 
     async function handleSubmit(e) {
         e.preventDefault();
-        console.log(title);
-        console.log(privacy);
-        console.log(description);
+
         const playlistPost = await fetch(`https://api.spotify.com/v1/users/${userId}/playlists`, {
             method: 'POST',
             body: JSON.stringify({ name: title, public: privacy, description }),
@@ -25,6 +23,10 @@ export default function PlaylistForm() {
         if (playlistPost.ok) {
             //maybe update playlist length here;
             setShowCreatePlaylist(false);
+            const playlistData = await playlistPost.json()
+            console.log(playlistData);
+            console.log(playlists);
+            setPlaylists([playlistData, ...playlists]);
         }
 
     }
@@ -34,37 +36,37 @@ export default function PlaylistForm() {
     }
 
     return (
-        <div className='playlist-popup'>
-            <div className='playlist-popup__container'>
-                <div className='playlist-form__close'>
-                    <a onClick={closeForm}>
-                        <img src="https://img.icons8.com/dotty/80/000000/close-window.png" />
-                    </a>
-                </div>
-                <div className='playlist-form-container' >
-                    <div>
-                        <h2>Add a PlayList</h2>
-                    </div>
-                    <Form className='playlist-form' onSubmit={handleSubmit}>
-                        <Form.Group controlId="formBasicEmail">
-                            <Form.Label>Playlist Title</Form.Label>
-                            <Form.Control value={title} onChange={(e) => setTitle(e.target.value)} name='playlistTitle' type="text" placeholder="Enter the name of the playlist" />
-                        </Form.Group>
-                        <Form.Group controlId="exampleForm.ControlSelect1">
-                            <Form.Label>Please Select A Privacy Setting For Your Playlist</Form.Label>
-                            <Form.Control onChange={(e) => setPrivacy(e.target.value)} name='privacySetting' as="select">
-                                <option value='true'>Public</option>
-                                <option value='false'>Private</option>
-                            </Form.Control>
-                        </Form.Group>
-                        <Form.Group controlId="exampleForm.ControlTextarea1">
-                            <Form.Label>Description For PLaylist</Form.Label>
-                            <Form.Control onChange={(e) => setDescription(e.target.value)} name='description' as="textarea" rows="3" />
-                        </Form.Group>
-                        <Button type="submit">Create Playlist</Button>
-                    </Form>
-                </div>
-            </div>
-        </div>
+        <Modal variant='dark' show={showCreatePlaylist} onHide={closeForm}>
+            <Modal.Header closeButton>
+                <Modal.Title>Add a PLaylist</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <Form className='playlist-form'>
+                    <Form.Group controlId="formBasicEmail">
+                        <Form.Label>Playlist Title</Form.Label>
+                        <Form.Control value={title} onChange={(e) => setTitle(e.target.value)} name='playlistTitle' type="text" placeholder="Enter the name of the playlist" />
+                    </Form.Group>
+                    <Form.Group controlId="exampleForm.ControlSelect1">
+                        <Form.Label>Please Select A Privacy Setting For Your Playlist</Form.Label>
+                        <Form.Control onChange={(e) => setPrivacy(e.target.value)} name='privacySetting' as="select">
+                            <option value='true'>Public</option>
+                            <option value='false'>Private</option>
+                        </Form.Control>
+                    </Form.Group>
+                    <Form.Group controlId="exampleForm.ControlTextarea1">
+                        <Form.Label>Description For PLaylist</Form.Label>
+                        <Form.Control onChange={(e) => setDescription(e.target.value)} name='description' as="textarea" rows="3" />
+                    </Form.Group>
+                </Form>
+            </Modal.Body>
+            <Modal.Footer>
+                <Button variant="secondary" onClick={closeForm}>
+                    Close
+                  </Button>
+                <Button variant="success" onClick={handleSubmit}>
+                    Save Changes
+                  </Button>
+            </Modal.Footer>
+        </Modal>
     )
 }
