@@ -1,72 +1,60 @@
-.artist-page-header-container{
+.artist-page-container{
     margin: 10px;
-}
-
-.artist-page__header{
-    display: flex;
-}
-
-.artist-page__above-picture{
-    display: flex;
-    /* align-items: center; */
     color: white;
-    margin: 0px 10px;
 }
 
-.artist-page__picture{
-    height: 300px;
-    width: 300px;
+.artist-page-header-container{
+    display: flex;
+    margin: 10px 0px;
+
 }
 
-.artist-page__verified{
-    width: 30px;
-    height: 30px;
-}
-
-.artist-page__right{
+.artist-page-header__right{
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    width: 100%;
     justify-content: flex-end;
-    width: 75%;
-    height: 100%;
-    color: white;
-    margin: auto;
+    margin-left: 10px;
 }
 
-.artist-page__text-verified{
+.artist-page-header-right__top{
+    display: flex;
+
+}
+
+.artist-page-header-right__bottom{
     display: flex;
     justify-content: space-between;
-    font-size: 16px;
+
 }
 
-.artist-page__name{
-    font-weight: bolder;
-    font-size: 90px;
-    align-self: flex-start;
-}
-
-.artist-page__left{
+.artist-page-header__verified{
     display: flex;
+    justify-content: space-between;
+    width: 10%;
+}
+
+.artist-page-header__checkmark{
+    width: 24px;
+}
+
+.artist-page-header__artist-name{
+    font-weight: bolder;
+    font-size: 100px;
+    text-align: end;
+}
+
+.artist-page-header__followers{
+    display:flex;
     flex-direction: column;
     justify-content: flex-end;
+    align-items: center;
+
+}
+/* .artist-page-header__artist-name{
+    width: 50%;
 }
 
-.sc-ifAKCX{
-    color:white;
-    font-size: x-large;
-}
-
-.top-songs_container{
-    width: 99%;
-}
-
-.artist-page__header-content{
-    border-bottom: solid 1px black;
-    width: 25%;
-    display: flex;
-    justify-content: center;
-    color: white;
-    margin: 25px auto;
-    text-align: center;
-}
+.artist-page-header__followers{
+    width: 50%;
+} */
