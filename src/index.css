@@ -25,6 +25,7 @@ a:hover{
 .side-pannel{
     height: 100%;
     width: 20%;
+    background-color: #454d55;
 }
 .navlink-container{
     display: flex;
