@@ -58,3 +58,12 @@
 .artist-page-header__followers{
     width: 50%;
 } */
+.artist-item-link{
+    margin-bottom: 0px;
+    transition-property: margin-bottom;
+    transition-duration: 1s;
+    transition-delay: 0s;
+}
+.artist-item-link:hover{
+    margin-bottom: 10px;
+}
