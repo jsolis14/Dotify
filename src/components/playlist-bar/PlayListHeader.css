@@ -1,6 +1,7 @@
 .playlist-header-container{
     display: flex;
     margin: 20px 0px;
+    align-items: flex-end;
 }
 
 .playlist-header__right{
@@ -17,4 +18,8 @@
 
 .playlist-header__name{
     font-weight: 700;
+}
+
+.playlist-header__left{
+    width: 25%;
 }
