@@ -45,7 +45,7 @@ function App() {
                   </div>
                 </NavLink>
               </div>
-              <div className='navlink__top-artists navlink'>
+              {/* <div className='navlink__top-artists navlink'>
                 <NavLink to='/' className='navlink__items'>
                   <div className='navlink__icon'>
                     <img alt='artist-icon' src="https://img.icons8.com/ios/48/000000/dj.png" />
@@ -64,7 +64,7 @@ function App() {
                     <div className='navlink__text'>Top Songs</div>
                   </div>
                 </NavLink>
-              </div>
+              </div> */}
             </div>
             {(authToken ? <PlayListBar /> : <></>)}
 
