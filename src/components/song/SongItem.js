@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AppContext } from '../../context/appContext';
+import './songItem.css'
 function SongItem({ track, playlistId }) {
 
     const { authToken, setShowNotification, setShowAddToPlaylistForm } = useContext(AppContext);
@@ -71,13 +72,13 @@ function SongItem({ track, playlistId }) {
         <tr>
             <td>
                 <div className='table-col-buttons'>
-                    <a onClick={playSong}>
+                    <a className='play-icons' onClick={playSong}>
                         <img alt='play song' src={require('../../images/play-button.png')} />
                     </a>
-                    <a onClick={addSongToQueue}>
+                    <a className='play-icons' onClick={addSongToQueue}>
                         <img src={require('../../images/add-to-queue.png')} />
                     </a>
-                    <a>
+                    <a className='play-icons'>
                         <img onClick={() => setShowAddToPlaylistForm({ show: true, track: track.id })} src={require('../../images/add-to-playlist.png')} />
                     </a>
                 </div>
