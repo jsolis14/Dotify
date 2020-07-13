@@ -12,7 +12,8 @@ import SearchPage from './components/search/SearchPage';
 import SimpleBar from 'simplebar-react';
 import 'simplebar/dist/simplebar.min.css';
 import AddToPlaylistForm from './components/add-to-playlist/AddToPlaylistForm.js';
-
+import RecPage from './components/homePage/RecPage';
+import AlbumPage from './components/albumPage/AlbumPage';
 
 function App() {
   const { authToken, showCreatePlaylist, showNotification, showAddToPlaylistForm } = useContext(AppContext)
@@ -45,7 +46,7 @@ function App() {
                   </div>
                 </NavLink>
               </div>
-              <div className='navlink__top-artists navlink'>
+              {/* <div className='navlink__top-artists navlink'>
                 <NavLink to='/' className='navlink__items'>
                   <div className='navlink__icon'>
                     <img alt='artist-icon' src="https://img.icons8.com/ios/48/000000/dj.png" />
@@ -64,7 +65,7 @@ function App() {
                     <div className='navlink__text'>Top Songs</div>
                   </div>
                 </NavLink>
-              </div>
+              </div> */}
             </div>
             {(authToken ? <PlayListBar /> : <></>)}
 
@@ -72,9 +73,11 @@ function App() {
         </div>
         <SimpleBar className='main-body-scrollbar' style={{ height: '100%' }}>
           <Switch>
+            <Route exact path='/' component={RecPage} />
             <Route exact path='/playlist/:playlistId' component={PlayListDetail} />
             <Route exact path='/search' component={SearchPage} />
             <Route exact path='/artist/:artistId' component={ArtistPage} />
+            <Route exact path='/album/:albumId' component={AlbumPage} />
           </Switch>
         </SimpleBar>
       </div>

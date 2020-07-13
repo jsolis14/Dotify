@@ -1,9 +1,11 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { AppContext } from '../../context/appContext';
-function SongItem({ track, playlistId }) {
+import './songItem.css'
+function SongItem({ track, fromAlbum = false }) {
 
     const { authToken, setShowNotification, setShowAddToPlaylistForm } = useContext(AppContext);
+
 
     function getArtist() {
         const artists = track.artists;
@@ -71,13 +73,13 @@ function SongItem({ track, playlistId }) {
         <tr>
             <td>
                 <div className='table-col-buttons'>
-                    <a onClick={playSong}>
+                    <a className='play-icons' onClick={playSong}>
                         <img alt='play song' src={require('../../images/play-button.png')} />
                     </a>
-                    <a onClick={addSongToQueue}>
+                    <a className='play-icons' onClick={addSongToQueue}>
                         <img src={require('../../images/add-to-queue.png')} />
                     </a>
-                    <a>
+                    <a className='play-icons'>
                         <img onClick={() => setShowAddToPlaylistForm({ show: true, track: track.id })} src={require('../../images/add-to-playlist.png')} />
                     </a>
                 </div>
@@ -85,7 +87,8 @@ function SongItem({ track, playlistId }) {
             </td>
             <td>{track.name}</td>
             <td>{getArtist()}</td>
-            <td>{track.album.name}</td>
+            {fromAlbum ? <td>PlaceHolder</td> : <td>{track.album.name}</td>}
+
         </tr>
     )
 }
