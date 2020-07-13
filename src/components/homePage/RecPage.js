@@ -4,12 +4,14 @@ import PlayListBar from '../playlist-bar/PlayListBar';
 import { Link } from 'react-router-dom';
 import ItemsCarousel from 'react-items-carousel';
 import PlaylistCard from './PlaylistCard';
+import AlbumItem from '../artistPage/AlbumItem';
 
 export default function RecPage() {
     const { authToken } = useContext(AppContext);
     const [recPlaylists, setRecPlaylists] = useState([])
-    cost[recAlbums, setRecAlbums] = useState([])
+    const [recAlbums, setRecAlbums] = useState([])
     const [activeItemIndex, setActiveItemIndex] = useState(0);
+    const [activeItemIndexAlbum, setActiveItemIndexAlbum] = useState(0);
     const chevronWidth = 40;
 
     async function getRecPlaylists() {
@@ -76,8 +78,27 @@ export default function RecPage() {
                     }
                 </ItemsCarousel>
             </div>
-            <div>
-
+            <div style={{ "padding": "15px 60px", "maxWidth": "100%", "maxHeight": "100%", "margin": "0px" }} >
+                <ItemsCarousel
+                    infiniteLoop={false}
+                    gutter={12}
+                    activePosition={'center'}
+                    chevronWidth={60}
+                    disableSwipe={false}
+                    alwaysShowChevrons={false}
+                    numberOfCards={5}
+                    slidesToScroll={5}
+                    outsideChevron={true}
+                    showSlither={false}
+                    firstAndLastGutter={false}
+                    activeItemIndex={activeItemIndexAlbum}
+                    requestToChangeActive={value => setActiveItemIndexAlbum(value)}
+                    rightChevron={'>'}
+                    leftChevron={'<'}>
+                    {recAlbums.map(album => {
+                        return <AlbumItem key={album.id} album={album} />
+                    })}
+                </ItemsCarousel>
             </div>
         </div>
     )
