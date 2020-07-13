@@ -1,10 +1,11 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { AppContext } from '../../context/appContext';
 import './songItem.css'
-function SongItem({ track, playlistId }) {
+function SongItem({ track, fromAlbum = false }) {
 
     const { authToken, setShowNotification, setShowAddToPlaylistForm } = useContext(AppContext);
+
 
     function getArtist() {
         const artists = track.artists;
@@ -86,7 +87,8 @@ function SongItem({ track, playlistId }) {
             </td>
             <td>{track.name}</td>
             <td>{getArtist()}</td>
-            <td>{track.album.name}</td>
+            {fromAlbum ? <td>PlaceHolder</td> : <td>{track.album.name}</td>}
+
         </tr>
     )
 }

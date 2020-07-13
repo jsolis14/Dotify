@@ -54,7 +54,9 @@ export default function RecPage() {
 
     return (
         <div>
-            <div style={{ "padding": "15px 60px", "maxWidth": "100%", "maxHeight": "100%", "margin": "0px" }} >
+
+            <div style={{ "padding": "15px 60px", "maxWidth": "100%", "maxHeight": "100%", "margin": "0px", "color": "white" }} >
+                <div>Featured Playlists</div>
                 <ItemsCarousel
                     infiniteLoop={false}
                     gutter={12}
@@ -78,7 +80,8 @@ export default function RecPage() {
                     }
                 </ItemsCarousel>
             </div>
-            <div style={{ "padding": "15px 60px", "maxWidth": "100%", "maxHeight": "100%", "margin": "0px" }} >
+            <div style={{ "padding": "15px 60px", "maxWidth": "100%", "maxHeight": "100%", "margin": "0px", "color": "white" }} >
+                <div>Featured Albums</div>
                 <ItemsCarousel
                     infiniteLoop={false}
                     gutter={12}
