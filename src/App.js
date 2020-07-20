@@ -14,7 +14,8 @@ import 'simplebar/dist/simplebar.min.css';
 import AddToPlaylistForm from './components/add-to-playlist/AddToPlaylistForm.js';
 import RecPage from './components/homePage/RecPage';
 import AlbumPage from './components/albumPage/AlbumPage';
-
+import { Navbar, Button, Form, FormControl } from 'react-bootstrap';
+import SearchBar from './components/search/SearchBar';
 function App() {
   const { authToken, showCreatePlaylist, showNotification, showAddToPlaylistForm } = useContext(AppContext)
 
@@ -72,6 +73,19 @@ function App() {
           </SimpleBar>
         </div>
         <SimpleBar className='main-body-scrollbar' style={{ height: '100%' }}>
+          <Navbar bg="dark" variant="dark">
+            <Navbar.Brand href="#home">
+              <img
+                alt=""
+                src="/logo.svg"
+                width="30"
+                height="30"
+                className="d-inline-block align-top"
+              />{' '}
+              Dotify
+          </Navbar.Brand>
+            <SearchBar />
+          </Navbar>
           <Switch>
             <Route exact path='/' component={RecPage} />
             <Route exact path='/playlist/:playlistId' component={PlayListDetail} />

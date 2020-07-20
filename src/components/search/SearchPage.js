@@ -5,15 +5,21 @@ import SongItem from '../song/SongItem';
 import { Link, Redirect } from 'react-router-dom';
 import './searchPage.css'
 
-function SearchPage() {
-    const [query, setQuery] = useState('');
+function SearchPage(props) {
+    // const [query, setQuery] = useState('');
     const [songs, setSongs] = useState([]);
     const [artists, setArtist] = useState([]);
     const [queryNext, setQueryNext] = useState('');
     const { authToken } = useContext(AppContext);
 
-    async function getSearchResults(e) {
-        e.preventDefault();
+    useEffect(() => {
+        if (props.location.state.query) {
+            getSearchResults(props.location.state.query)
+        }
+    }, [props.location.state.query])
+
+
+    async function getSearchResults(query) {
         const encodedQuery = encodeURIComponent(query);
         console.log(encodedQuery);
 
@@ -33,8 +39,6 @@ function SearchPage() {
         } else {
             return
         }
-
-
     }
 
     async function loadMoreSongs(queryNext) {
@@ -49,19 +53,10 @@ function SearchPage() {
 
             if (next !== null) setQueryNext(next);
         }
-
-
     }
 
     return (
         <div className='search-page__container'>
-            <div className='search-page__form'>
-                <Form onSubmit={getSearchResults} >
-                    <Form.Group controlId="searchInput">
-                        <Form.Control type="text" onChange={(e) => setQuery(e.target.value)} placeholder="Search" />
-                    </Form.Group>
-                </Form>
-            </div>
             {((songs.length === 0 || artists.length === 0) ? <> </> :
                 <div className='search-page__results'>
                     <div className='search-page__songs'>
