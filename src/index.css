@@ -107,3 +107,13 @@ table{
 .play-column{
     width: 10%;
 }
+
+.nav-container{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.nav-container__title-container{
+    display: flex;
+}

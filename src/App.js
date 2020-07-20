@@ -73,18 +73,25 @@ function App() {
           </SimpleBar>
         </div>
         <SimpleBar className='main-body-scrollbar' style={{ height: '100%' }}>
-          <Navbar bg="dark" variant="dark">
-            <Navbar.Brand href="#home">
-              <img
-                alt=""
-                src="/logo.svg"
-                width="30"
-                height="30"
-                className="d-inline-block align-top"
-              />{' '}
+          <Navbar variant="dark" style={{ backgroundColor: '#454d55' }}>
+            <div className='nav-container'>
+              <div className='nav-container__title-container'>
+                <Navbar.Brand href="#home">
+                  <img
+                    alt=""
+                    src="/logo.svg"
+                    width="30"
+                    height="30"
+                    className="d-inline-block align-top"
+                  />{' '}
               Dotify
-          </Navbar.Brand>
-            <SearchBar />
+              </Navbar.Brand>
+                <SearchBar />
+              </div>
+              <div>
+                <Button variant="primary">Log Out</Button>
+              </div>
+            </div>
           </Navbar>
           <Switch>
             <Route exact path='/' component={RecPage} />

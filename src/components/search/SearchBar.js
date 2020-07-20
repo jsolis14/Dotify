@@ -68,7 +68,7 @@ export default function SearchBar() {
     }
     return (
         <div className='search-page__form'>
-            <Form onSubmit={formSubmit}>
+            <Form inline onSubmit={formSubmit}>
                 <Form.Group controlId="searchInput">
                     <Form.Control type="text" onChange={searchChange} placeholder="Search" />
                 </Form.Group>
