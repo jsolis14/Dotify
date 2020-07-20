@@ -74,7 +74,7 @@ export default function SearchBar() {
                 </Form.Group>
             </Form>
             {renderSearch ? <Redirect to={{
-                pathname: 'search',
+                pathname: '/search',
                 state: { query }
             }} /> : <></>}
         </div>

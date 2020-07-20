@@ -12,7 +12,7 @@ function AlbumItem({ album }) {
 
     return (
         <div className='album-card-container'>
-            <Link to={`album/${album.id}`}>
+            <Link to={`/album/${album.id}`}>
                 <Card style={{ height: '410px', overflow: "hidden" }}>
                     <Card.Img style={{ height: '275px', width: '100%' }} variant="top" src={album.images[1].url} />
                     <Card.Body>
