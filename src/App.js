@@ -19,7 +19,11 @@ import SearchBar from './components/search/SearchBar';
 function App() {
   const { authToken, showCreatePlaylist, showNotification, showAddToPlaylistForm } = useContext(AppContext)
 
-
+  function logOut() {
+    localStorage.removeItem('SPOTIFY_ACCESS')
+    localStorage.removeItem('_spharmony_device_id')
+    window.location.href = process.env.REACT_APP_REDIRECT_URI + 'login'
+  }
   return (
     <>
       <div className='page-body'>
@@ -89,7 +93,7 @@ function App() {
                 <SearchBar />
               </div>
               <div>
-                <Button variant="primary">Log Out</Button>
+                <Button onClick={logOut} variant="primary">Log Out</Button>
               </div>
             </div>
           </Navbar>
