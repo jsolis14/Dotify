@@ -41,16 +41,6 @@ function App() {
                   </div>
                 </NavLink>
               </div>
-              {/* <div className='navlink__Search navlink'>
-                <NavLink className='navlink__items' to='/search'>
-                  <div className='navlink__icon'>
-                    <img alt='search-icon' src="https://img.icons8.com/ios/50/000000/search--v1.png" />
-                  </div>
-                  <div className='navlink__text-container'>
-                    <div className='navlink__text'>Search</div>
-                  </div>
-                </NavLink>
-              </div> */}
               {/* <div className='navlink__top-artists navlink'>
                 <NavLink to='/' className='navlink__items'>
                   <div className='navlink__icon'>

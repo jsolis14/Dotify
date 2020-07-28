@@ -53,7 +53,7 @@ export default function PlaylistForm() {
                         </Form.Control>
                     </Form.Group>
                     <Form.Group controlId="exampleForm.ControlTextarea1">
-                        <Form.Label>Description For PLaylist</Form.Label>
+                        <Form.Label>Description For Playlist</Form.Label>
                         <Form.Control onChange={(e) => setDescription(e.target.value)} name='description' as="textarea" rows="3" />
                     </Form.Group>
                 </Form>

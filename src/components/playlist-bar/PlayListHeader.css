@@ -23,4 +23,9 @@
 .playlist-header__left{
     width: 300px;
     height: 300px;
+    margin-right: 10px;
+}
+
+.artist-page-header__picture{
+    width: 350px;
 }

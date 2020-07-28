@@ -52,7 +52,7 @@ function PlayListBar() {
             <div className='playlist__add-button'>
                 <div className='playlist-bar__title'>PLAYLISTS</div>
                 <a onClick={showForm}>
-                    <img src={require('../../images/add-playlist-button.png')} />
+                    <img className='playlist__add-button-img' src={require('../../images/add-playlist-button.png')} />
                 </a>
             </div>
             <div className='playlist__items'>

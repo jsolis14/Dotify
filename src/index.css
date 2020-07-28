@@ -117,3 +117,8 @@ table{
 .nav-container__title-container{
     display: flex;
 }
+
+.playlist__add-button-img{
+    width: 30px;
+    height: 30px;
+}
