@@ -41,7 +41,7 @@ function PlayListDetail(props) {
 
         const { description, images, name, owner, tracks: { total } } = await playlistData.json();
 
-        console.log(total);
+
         setPlaylistDetails({ description, images, name, owner, total });
 
     }

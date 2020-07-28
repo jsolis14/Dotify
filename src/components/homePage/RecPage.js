@@ -16,7 +16,7 @@ export default function RecPage() {
 
     async function getRecPlaylists() {
         const url = 'https://api.spotify.com/v1/browse/featured-playlists'
-        console.log(authToken)
+
         const data = await fetch(url, {
             headers: {
                 'Authorization': `Bearer ${authToken}`
@@ -30,7 +30,7 @@ export default function RecPage() {
 
     async function getRecAlbums() {
         const url = 'https://api.spotify.com/v1/browse/new-releases'
-        console.log(authToken)
+
         const data = await fetch(url, {
             headers: {
                 'Authorization': `Bearer ${authToken}`
@@ -39,7 +39,7 @@ export default function RecPage() {
 
         const { albums } = await data.json()
         setRecAlbums(albums.items)
-        console.log(albums.items)
+
     }
 
     useEffect(() => {

@@ -21,7 +21,7 @@ function SearchPage(props) {
 
     async function getSearchResults(query) {
         const encodedQuery = encodeURIComponent(query);
-        console.log(encodedQuery);
+
 
         const url = `https://api.spotify.com/v1/search?q=${encodedQuery}&type=track,artist`;
         const searchResultsData = await fetch(url, {
@@ -30,7 +30,7 @@ function SearchPage(props) {
 
         if (searchResultsData.ok) {
             const { tracks, artists } = await searchResultsData.json()
-            console.log(artists);
+
             setSongs(tracks.items);
             setArtist(artists.items);
             if (tracks.next !== null) {

@@ -24,8 +24,7 @@ export default function PlaylistForm() {
             //maybe update playlist length here;
             setShowCreatePlaylist(false);
             const playlistData = await playlistPost.json()
-            console.log(playlistData);
-            console.log(playlists);
+
             setPlaylists([playlistData, ...playlists]);
         }
 

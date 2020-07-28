@@ -24,7 +24,7 @@ export default function AlbumPage(props) {
         })
 
         const album = await data.json();
-        console.log(album)
+
         setAlbum(album)
     }
 
@@ -70,7 +70,7 @@ export default function AlbumPage(props) {
                     <tbody>
                         {album.tracks.items.length > 0 ?
                             album.tracks.items.map(track => {
-                                console.log(track)
+
                                 return <SongItem key={track.id} track={track} playlistId={props.match.params.playlistId} fromAlbum={true} />
                             }) : <></>}
                     </tbody>

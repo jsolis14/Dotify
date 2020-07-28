@@ -62,7 +62,7 @@ function ArtistPage({ match }) {
 
         const { artists } = await similiarArtistData.json();
         setSimiliarArtist(artists)
-        console.log(similiarArtist);
+
     }
 
     useEffect(() => {

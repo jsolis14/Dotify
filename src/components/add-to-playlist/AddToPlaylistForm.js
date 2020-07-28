@@ -39,8 +39,7 @@ export default function AddToPlaylistForm() {
     }
 
     async function handleSubmit() {
-        // e.prevent.default()
-        console.log(checkedPlaylists);
+
 
         //map to array of fetch requests
         const track = showAddToPlaylistForm.track;
@@ -57,22 +56,22 @@ export default function AddToPlaylistForm() {
 
         const responses = await Promise.all(fetches);
 
-        console.log(fetches);
+
         handleClose();
     }
 
     function toggleCheckBox(e, idx) {
-        console.log('value', e.target.value);
+
         const checkedIdx = checkedPlaylists.indexOf(e.target.value)
         if (e.target.checked && checkedIdx === -1) {
-            console.log('checked');
+
             setCheckedPlaylists([...checkedPlaylists, e.target.value])
         } else if (!e.target.checked && checkedIdx > -1) {
-            console.log('not checked')
+
             setCheckedPlaylists([...checkedPlaylists.slice(0, checkedIdx), ...checkedPlaylists.slice(checkedIdx + 1, checkedPlaylists.length)])
         }
 
-        console.log(checkedPlaylists)
+
     }
 
     useEffect(() => {
